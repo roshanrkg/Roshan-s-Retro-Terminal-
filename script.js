@@ -2,7 +2,7 @@ const input = document.getElementById("commandInput");
 const output = document.getElementById("output");
 
 const commands = {
-  help: `Available commands:\nabout, resume, projects, experience, contact, clear`,
+  help: `Available commands:\nabout, resume, projects, experience, contact, skills, clear`,
   skills: `Programming Languages: JavaScript, Java.
 Backend Technologies: Node.js, Express.js.
 Databases: MongoDB, Oracle DB, Redis.
