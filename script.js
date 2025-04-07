@@ -1,9 +1,6 @@
 const input = document.getElementById("commandInput");
 const output = document.getElementById("output");
-
-// Load sound
-const keySound = new Audio("key.wav");
-keySound.preload = "auto";
+const keySound = document.getElementById("key-sound");
 
 const commands = {
   help: `Available commands:\nabout, resume, projects, experience, contact, skills, clear`,
@@ -15,22 +12,40 @@ Tools & Methodologies: NPM,Render, Railway,Github.
 Soft Skills: Communication, Teamwork, Leadership, Problem-Solving.`,
   about: "Aspiring Backend Engineer with strong JavaScript skills, specializing in building scalable APIs using Node.js, Express.js, and modern databases. Passionate about high-performance systems and currently learning Golang with the Gin framework.",
   resume: "Opening resume in new tab...",
-  projects: `🧑‍💻 Projects:\n- Realtime Device Tracker (Websocket project) <a href="https://real-time-device-tracking-jv9r.onrender.com/" class=" text-blue-400" target="_blank">🔗</a> \n A real-time map-based tracking system inspired by Uber/Zomato Using websockets and leaflet.js. \n \n- The Bag Company ( E commerce Platform )<a href="https://github.com/roshanrkg/The-Bag-Company" class=" text-blue-400" target="_blank">🔗</a>\n A dynamic and fully functional e-commerce platform with the Tech Stack: Node.js, Express.js, MongoDB, Tailwind CSS, EJS.\n \n- Task Manager (First beginner project) \n A fully functional Task manager with user based authorizaton and authentication using JWT , with capabilities to perform all CRUD operations.`,
-  experience: "Work Experience:\n Not employed yet — but learning every day, building cool stuff, and preparing for real-world dev challenges..",
-  contact: `📧 Email: <a href="mailto:roshanguptarkg@gmail.com" class="underline text-blue-400" target="_blank">roshanguptarkg@gmail.com</a> \n🔗 LinkedIn: <a href="https://www.linkedin.com/in/roshan-kumar-gupta-a979b626b/" class="underline text-blue-400" target="_blank">linkedin</a> \n🔗 Github: <a href="https://github.com/roshanrkg" class="underline text-blue-400" target="_blank">Github</a>`,  
+  projects: `🧑‍💻 Projects:
+- Realtime Device Tracker <a href="https://real-time-device-tracking-jv9r.onrender.com/" class="text-blue-400" target="_blank">🔗</a> 
+A real-time map-based tracking system inspired by Uber/Zomato.
+
+- The Bag Company <a href="https://github.com/roshanrkg/The-Bag-Company" class="text-blue-400" target="_blank">🔗</a> 
+Dynamic E-commerce platform built with Node.js, MongoDB, TailwindCSS, EJS.
+
+- Task Manager 
+JWT-based task manager with CRUD operations.`,
+  experience: "Work Experience:\nNot employed yet — but learning every day, building cool stuff, and preparing for real-world dev challenges.",
+  contact: `📧 Email: <a href="mailto:roshanguptarkg@gmail.com" class="underline text-blue-400" target="_blank">roshanguptarkg@gmail.com</a>
+🔗 LinkedIn: <a href="https://www.linkedin.com/in/roshan-kumar-gupta-a979b626b/" class="underline text-blue-400" target="_blank">linkedin</a>
+🔗 Github: <a href="https://github.com/roshanrkg" class="underline text-blue-400" target="_blank">Github</a>`,
   clear: "clear"
 };
 
-// Play sound on every key press
+let commandHistory = [];
+let historyIndex = -1;
+
 input.addEventListener("keydown", (e) => {
-  // Skip for special keys if you want (like Shift, Alt)
+  // Play sound
   if (e.key.length === 1 || e.key === "Backspace" || e.key === "Enter") {
     keySound.currentTime = 0;
     keySound.play();
   }
 
+  // Command execution
   if (e.key === "Enter") {
     const command = input.value.trim().toLowerCase();
+    if (command) {
+      commandHistory.push(command);
+      historyIndex = commandHistory.length;
+    }
+
     output.innerHTML += `\n> ${command}\n`;
 
     if (commands[command]) {
@@ -48,5 +63,37 @@ input.addEventListener("keydown", (e) => {
 
     input.value = "";
     window.scrollTo(0, document.body.scrollHeight);
+  }
+
+  // Command history
+  if (e.key === "ArrowUp") {
+    if (historyIndex > 0) {
+      historyIndex--;
+      input.value = commandHistory[historyIndex];
+    }
+    e.preventDefault();
+  }
+
+  if (e.key === "ArrowDown") {
+    if (historyIndex < commandHistory.length - 1) {
+      historyIndex++;
+      input.value = commandHistory[historyIndex];
+    } else {
+      input.value = "";
+      historyIndex = commandHistory.length;
+    }
+    e.preventDefault();
+  }
+
+  // Autocomplete with Tab
+  if (e.key === "Tab") {
+    e.preventDefault();
+    const current = input.value.trim().toLowerCase();
+    const matches = Object.keys(commands).filter(cmd => cmd.startsWith(current));
+    if (matches.length === 1) {
+      input.value = matches[0];
+    } else if (matches.length > 1) {
+      output.innerHTML += `\n${matches.join("    ")}\n`;
+    }
   }
 });
