@@ -10,12 +10,13 @@
 
   <style>
     body {
-      background: #000000;
+      background: url('image.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #00ff00;
       font-family: 'Courier New', monospace;
       text-shadow: 0 0 2px #00ff00;
     }
-
+  
     .scanlines {
       position: absolute;
       top: 0;
@@ -33,23 +34,27 @@
       z-index: 5;
       border-radius: inherit;
     }
-
+  
     @keyframes blink {
       50% {
         opacity: 0;
       }
     }
-
+  
     .cursor::after {
       content: '_';
       animation: blink 1s step-start infinite;
     }
+
+    #terminal {
+  background-color: rgba(0, 0, 0, 0.7); /* 50% transparent black */
+}
   </style>
 </head>
 
 <body class="bg-black text-green-400 font-mono p-6">
 
-  <div class="max-w-4xl mx-auto my-10 bg-black rounded-md shadow-lg relative overflow-hidden">
+  <div class="max-w-4xl mx-auto my-10 rounded-md shadow-lg relative overflow-hidden bg-opacity-0" style="background-color: rgba(0, 0, 0, 0);">
     <!-- Title bar -->
     <div class="bg-gray-800 px-4 py-2 rounded-t-md flex justify-between items-center text-white">
       <div class="flex space-x-2">
@@ -60,19 +65,19 @@
       <div class="text-xs opacity-70">Terminal — Roshan's@portfolio</div>
       <div></div>
     </div>
-
+  
     <!-- Scanline effect only inside terminal box -->
     <div class="scanlines"></div>
-
+  
     <!-- Terminal content -->
     <div id="terminal" class="p-6 space-y-2 relative z-10">
       <div class="text-lg font-bold text-white"> Hello World!</div>
-
+  
       <div class="text-sm">
         Welcome to <span class="text-yellow-400">Roshan's</span> interactive terminal portfolio.<br>
         Type any command below to learn more. <br> Type "help" for help.
       </div>
-
+  
       <div class="mt-4">
         <span class="text-purple-400">Available Commands:</span>
         <ul class="list-disc list-inside ml-4">
@@ -85,7 +90,7 @@
           <li><span class="text-yellow-300">clear</span> – Clear the terminal</li>
         </ul>
       </div>
-
+  
       <div id="output" class="mt-6 whitespace-pre-wrap text-sm"></div>
     </div>
   </div>
