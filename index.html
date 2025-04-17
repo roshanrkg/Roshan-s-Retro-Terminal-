@@ -35,75 +35,323 @@
       border-radius: inherit;
     }
   
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
-    }
-  
-    .cursor::after {
-      content: '_';
-      animation: blink 1s step-start infinite;
-    }
+
+
 
     #terminal {
-  background-color: rgba(0, 0, 0, 0.7); /* 50% transparent black */
-}
+      background-color: rgba(0, 0, 0, 0.7); /* 70% transparent black */
+    }
+
+    /* Skill bar styling */
+    .skills-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      
+      border-radius: 0.375rem;
+    }
+    
+    .skill-category {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      margin-right: 0.5rem;
+      border-radius: 0.25rem;
+      font-weight: bold;
+      color: white;
+    }
+    
+    .skill-tabs {
+      display: flex;
+      margin-bottom: 1rem;
+      gap: 0.5rem;
+    }
+    
+    .skill-tab {
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .skill-tab.active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .skill-item {
+      margin-bottom: 1rem;
+    }
+    
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    
+    .skill-icon {
+      display: inline-flex;
+      padding: 0.5rem;
+      color: white;
+      border-radius: 0.25rem;
+    }
+    
+    .skill-level {
+      padding: 0.25rem 0.75rem;
+      border-radius: 5px;
+      font-size: 0.75rem;
+    }
+    
+    .skill-bar {
+      height: 0.5rem;
+      border-radius: 9999px;
+      background-color: rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      display: flex;
+    }
+    
+    .skill-progress {
+      height: 100%;
+      border-radius: 9999px;
+    }
+    
+    .skill-dot {
+      height: 0.5rem;
+      width: 0.5rem;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
   </style>
 </head>
 
 <body class="bg-black text-green-400 font-mono p-6">
 
-  <div class="max-w-4xl mx-auto my-10 rounded-md shadow-lg relative overflow-hidden bg-opacity-0" style="background-color: rgba(0, 0, 0, 0);">
-    <!-- Title bar -->
-    <div class="bg-gray-800 px-4 py-2 rounded-t-md flex justify-between items-center text-white">
-      <div class="flex space-x-2">
-        <span class="w-3 h-3 bg-red-500 rounded-full inline-block"></span>
-        <span class="w-3 h-3 bg-yellow-400 rounded-full inline-block"></span>
-        <span class="w-3 h-3 bg-green-500 rounded-full inline-block"></span>
+  <div class="flex flex-col md:flex-row gap-6 max-w-6xl mx-auto my-10">
+    <!-- Terminal Section -->
+    <div class="w-full md:w-3/5 rounded-md shadow-lg relative overflow-hidden bg-opacity-0" style="background-color: rgba(0, 0, 0, 0);">
+      <!-- Title bar -->
+      <div class="bg-gray-800 px-4 py-2 rounded-t-md flex justify-between items-center text-white">
+        <div class="flex space-x-2">
+          <span class="w-3 h-3 bg-red-500 rounded-full inline-block"></span>
+          <span class="w-3 h-3 bg-yellow-400 rounded-full inline-block"></span>
+          <span class="w-3 h-3 bg-green-500 rounded-full inline-block"></span>
+        </div>
+        <div class="text-xs opacity-70">Terminal — Roshan's@portfolio</div>
+        <div></div>
       </div>
-      <div class="text-xs opacity-70">Terminal — Roshan's@portfolio</div>
-      <div></div>
+    
+      <!-- Scanline effect only inside terminal box -->
+      <div class="scanlines"></div>
+    
+      <!-- Terminal content -->
+      <div id="terminal" class="p-6 space-y-2 relative z-10">
+        <div class="text-lg font-bold text-white"> Hello World!</div>
+    
+        <div class="text-sm">
+          Welcome to <span class="text-yellow-400">Roshan's</span> interactive terminal portfolio.<br>
+          Type any command below to learn more. <br> Type "help" for help.
+        </div>
+    
+        <div class="mt-4">
+          <span class="text-purple-400">Available Commands:</span>
+          <ul class="list-disc list-inside ml-4">
+            <li><span class="text-yellow-300">about</span> – Show info about me</li>
+            <li><span class="text-yellow-300">projects</span> – See my projects</li>
+            <li><span class="text-yellow-300">resume</span> – Open my resume</li>
+            <li><span class="text-yellow-300">experience</span> – My work experience</li>
+            <li><span class="text-yellow-300">contact</span> – How to reach me</li>
+            <li><span class="text-yellow-300">skills</span> – List of your tech stack & languages</li>
+            <li><span class="text-yellow-300">clear</span> – Clear the terminal</li>
+
+
+          </ul>
+        </div>
+    
+        <div id="output" class="mt-6 whitespace-pre-wrap text-sm"></div>
+      </div>
     </div>
-  
-    <!-- Scanline effect only inside terminal box -->
-    <div class="scanlines"></div>
-  
-    <!-- Terminal content -->
-    <div id="terminal" class="p-6 space-y-2 relative z-10">
-      <div class="text-lg font-bold text-white"> Hello World!</div>
-  
-      <div class="text-sm">
-        Welcome to <span class="text-yellow-400">Roshan's</span> interactive terminal portfolio.<br>
-        Type any command below to learn more. <br> Type "help" for help.
+
+
+    <!-- Skills Section -->
+    <div class="w-full h-1/3 md:w-2/5 skills-container">
+      <div class="bg-gray-800 px-4 py-2 rounded-t-md flex justify-between items-center text-white">
+        <div class="flex space-x-2">
+          <span class="w-3 h-3 bg-red-500 rounded-full inline-block"></span>
+          <span class="w-3 h-3 bg-yellow-400 rounded-full inline-block"></span>
+          <span class="w-3 h-3 bg-green-500 rounded-full inline-block"></span>
+        </div>
+        <div class="text-xs opacity-70">Roshan's @Technical_skills</div>
+        <div></div>
       </div>
-  
-      <div class="mt-4">
-        <span class="text-purple-400">Available Commands:</span>
-        <ul class="list-disc list-inside ml-4">
-          <li><span class="text-yellow-300">about</span> – Show info about me</li>
-          <li><span class="text-yellow-300">projects</span> – See my projects</li>
-          <li><span class="text-yellow-300">resume</span> – Open my resume</li>
-          <li><span class="text-yellow-300">experience</span> – My work experience</li>
-          <li><span class="text-yellow-300">contact</span> – How to reach me</li>
-          <li><span class="text-yellow-300">skills</span> – List of your tech stack & languages</li>
-          <li><span class="text-yellow-300">clear</span> – Clear the terminal</li>
-        </ul>
+      <div>
+        
+
+        
+
+        
+        <!-- JS Skill -->
+        <div class="skill-item mt-4 ">
+          <div class="skill-header">
+            <div>
+              <span class="skill-icon bg-orange-500">JS</span>
+              <span class="ml-2 text-white font-bold">Javascript</span>
+            </div>
+            <span class="skill-level bg-orange-600">advanced</span>
+          </div>
+          <div class="skill-bar">
+            <div class="flex w-full">
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+              <div class="skill-dot bg-orange-500"></div>
+
+            </div>
+          </div>
+        </div>
+
+                <!-- Java Skill -->
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <div>
+              <span class="skill-icon bg-zinc-900">🍵</span>
+              <span class="ml-2 text-white font-bold">java</span>
+            </div>
+            <span class="skill-level bg-zinc-600">intermediate</span>
+          </div>
+          <div class="skill-bar">
+            <div class="flex w-full">
+              <div class="skill-dot bg-yellow-500"></div>
+              <div class="skill-dot bg-yellow-500"></div>
+              <div class="skill-dot bg-yellow-500"></div>
+              <div class="skill-dot bg-yellow-500"></div>
+              <div class="skill-dot bg-yellow-500"></div>
+              <div class="skill-dot bg-yellow-500"></div>
+              <div class="skill-dot bg-yellow-500"></div>
+              <div class="skill-dot bg-yellow-500"></div>
+              <div class="skill-dot bg-yellow-500"></div>
+              <div class="skill-dot bg-yellow-500"></div>
+              <div class="skill-dot bg-yellow-500"></div>
+              <div class="skill-dot bg-yellow-500"></div>
+              <div class="skill-dot bg-yellow-500"></div>
+
+
+
+            </div>
+          </div>
+        </div>
+        
+        <!-- TypeScript Skill -->
+        <div class="skill-item">
+          <div class="skill-header">
+            <div>
+              <span class="skill-icon bg-blue-500">TS</span>
+              <span class="ml-2 text-white font-bold">TypeScript</span>
+            </div>
+            <span class="skill-level bg-blue-600">intermediate</span>
+          </div>
+          <div class="skill-bar">
+            <div class="flex w-full">
+              <div class="skill-dot bg-blue-500"></div>
+              <div class="skill-dot bg-blue-500"></div>
+              <div class="skill-dot bg-blue-500"></div>
+              <div class="skill-dot bg-blue-500"></div>
+              <div class="skill-dot bg-blue-500"></div>
+              <div class="skill-dot bg-blue-500"></div>
+              <div class="skill-dot bg-blue-500"></div>
+              <div class="skill-dot bg-blue-500"></div>
+              <div class="skill-dot bg-blue-500"></div>
+              <div class="skill-dot bg-blue-500"></div>
+              <div class="skill-dot bg-blue-500"></div>
+              <div class="skill-dot bg-blue-500"></div>
+              <div class="skill-dot bg-blue-500"></div>
+
+
+            </div>
+          </div>
+        </div>
+        
+
+        
+        <!-- Redis Skill -->
+        <div class="skill-item">
+          <div class="skill-header">
+            <div>
+              <span class="skill-icon bg-red-500">📚</span>
+              <span class="ml-2 text-white font-bold">Redis</span>
+            </div>
+            <span class="skill-level bg-red-600">beginner</span>
+          </div>
+          <div class="skill-bar">
+            <div class="flex w-full">
+              <div class="skill-dot bg-red-500"></div>
+              <div class="skill-dot bg-red-500"></div>
+              <div class="skill-dot bg-red-500"></div>
+              <div class="skill-dot bg-red-500"></div>
+              <div class="skill-dot bg-red-500"></div>
+              <div class="skill-dot bg-red-500"></div>
+              <div class="skill-dot bg-red-500"></div>
+              <div class="skill-dot bg-red-500"></div>
+
+            </div>
+          </div>
+        </div>
+        
+        <!-- Node.js Skill -->
+        <div class="skill-item">
+          <div class="skill-header">
+            <div>
+              <span  class="skill-icon bg-zinc-900">🍀</span>
+              <span class="ml-2 text-white font-bold">Node.js</span>
+            </div>
+            <span class="skill-level bg-zinc-600">intermediate</span>
+          </div>
+          <div class="skill-bar">
+            <div class="flex w-full">
+              <div class="skill-dot bg-green-500"></div>
+              <div class="skill-dot bg-green-500"></div>
+              <div class="skill-dot bg-green-500"></div>
+              <div class="skill-dot bg-green-500"></div>
+              <div class="skill-dot bg-green-500"></div>
+              <div class="skill-dot bg-green-500"></div>
+              <div class="skill-dot bg-green-500"></div>
+              <div class="skill-dot bg-green-500"></div>
+              <div class="skill-dot bg-green-500"></div>
+              <div class="skill-dot bg-green-500"></div>
+              <div class="skill-dot bg-green-500"></div>
+              <div class="skill-dot bg-green-500"></div>
+              <div class="skill-dot bg-green-500"></div>
+
+
+            </div>
+          </div>
+        </div>
       </div>
-  
-      <div id="output" class="mt-6 whitespace-pre-wrap text-sm"></div>
     </div>
   </div>
 
   <!-- Input area -->
-  <div class="mt-6">
+  <div class="mt-6 max-w-6xl mx-auto">
     <label for="commandInput" class="text-green-500">Roshan@Roshan's-Macbook ~ %  </label>
     <input
       id="commandInput"
       type="text"
-      class="bg-transparent border-none focus:outline-none text-green-300 w-1/5"
+      class="bg-transparent border-none focus:outline-none text-green-300 w-2/5"
       autofocus
       autocomplete="off"
+      placeholder="(Enter command here)"
     />
   </div>
   <audio id="key-sound" src="key.mp3" preload="auto"></audio>

@@ -2,6 +2,19 @@ const input = document.getElementById("commandInput");
 const output = document.getElementById("output");
 const keySound = document.getElementById("key-sound");
 
+// Tab functionality
+const skillTabs = document.querySelectorAll('.skill-tab');
+skillTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    // Remove active class from all tabs
+    skillTabs.forEach(t => t.classList.remove('active'));
+    // Add active class to clicked tab
+    tab.classList.add('active');
+    // Here you would normally filter skill items based on category
+    // But we'll keep it simple for now
+  });
+});
+
 const commands = {
   help: `Available commands:\nabout, resume, projects, experience, contact, skills, clear`,
   skills: `Programming Languages: JavaScript, Java.
@@ -20,7 +33,7 @@ A real-time map-based tracking system inspired by Uber/Zomato.
 Dynamic E-commerce platform built with Node.js, MongoDB, TailwindCSS, EJS.
 
 - Task Manager 
-JWT-based task manager with CRUD operations.`,
+User-based secure(Jwt,Bcrypt) task manager with CRUD operations.`,
   experience: "Work Experience:\nNot employed yet — but learning every day, building cool stuff, and preparing for real-world dev challenges.",
   contact: `📧 Email: <a href="mailto:roshanguptarkg@gmail.com" class="underline text-blue-400" target="_blank">roshanguptarkg@gmail.com</a>
 🔗 LinkedIn: <a href="https://www.linkedin.com/in/roshan-kumar-gupta-a979b626b/" class="underline text-blue-400" target="_blank">linkedin</a>
