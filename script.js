@@ -17,7 +17,7 @@ skillTabs.forEach(tab => {
 
 const commands = {
   help: `Available commands:\nabout, resume, projects, experience, contact, skills, clear`,
-  skills: `Programming Languages: JavaScript, Java.
+  skills: `Programming Languages: JavaScript, Java, TypeScript.
 Backend Technologies: Node.js, Express.js.
 Databases: MongoDB, Oracle DB, Redis.
 Frontend Technologies: HTML,Tailwind CSS(basic) , EJS.
