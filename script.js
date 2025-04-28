@@ -17,12 +17,13 @@ skillTabs.forEach(tab => {
 
 const commands = {
   help: `Available commands:\nabout, resume, projects, experience, contact, skills, clear`,
-  skills: `Programming Languages:     JavaScript, Java, TypeScript.
+  skills: `
+Programming Languages:    JavaScript, Java, TypeScript.
 Backend Technologies:     Node.js, Express.js.
-Databases:     MongoDB, Oracle DB, Redis.
-Frontend Technologies:     HTML,Tailwind CSS(basic) , EJS.
-Tools & Methodologies:     NPM,Render, Railway,Github.
-Soft Skills:     Communication, Teamwork, Leadership, Problem-Solving.`,
+Databases:                MongoDB, Oracle DB, Redis.
+Frontend Technologies:    HTML,Tailwind CSS(basic) , EJS.
+Tools & Methodologies:    NPM,Render, Railway,Github.
+Soft Skills:              Communication, Teamwork, Leadership, Problem-Solving.`,
   about: "Aspiring Backend Engineer with strong JavaScript skills, specializing in building scalable APIs using Node.js, Express.js, and modern databases. Passionate about high-performance systems and currently learning Golang with the Gin framework.",
   resume: "Opening resume in new tab...",
   projects: `🧑‍💻 Projects:
