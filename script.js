@@ -33,8 +33,8 @@ A real-time map-based tracking system inspired by Uber/Zomato.
 - The Bag Company <a href="https://github.com/roshanrkg/The-Bag-Company" class="text-blue-400" target="_blank">🔗</a> 
 Dynamic E-commerce platform built with Node.js, MongoDB, TailwindCSS, EJS.
 
-- Task Manager 
-User-based secure(Jwt,Bcrypt) task manager with CRUD operations.`,
+- Retro Terminal  <a href="https://roshangupta.onrender.com/" class="text-blue-400" target="_blank">🔗</a>   
+Portfolio made like a Terminal with old school Crt display looks.`,
   experience: "Work Experience:\nNot employed yet — but learning every day, building cool stuff, and preparing for real-world dev challenges.",
   contact: `📧 Email: <a href="mailto:roshanguptarkg@gmail.com" class="underline text-blue-400" target="_blank">roshanguptarkg@gmail.com</a>
 🔗 LinkedIn: <a href="https://www.linkedin.com/in/roshan-kumar-gupta-a979b626b/" class="underline text-blue-400" target="_blank">linkedin</a>
