@@ -23,9 +23,9 @@ Backend Technologies:     Node.js, Express.js.
 Frontend Technologies:    HTML,Tailwind CSS(basic), EJS.
 Databases:                MongoDB, Oracle DB, Redis, Mongoose
 Tools & Methodologies:    NPM,Render, Railway, Github, Vercel, Postman
-Soft Skills:              Communication, Teamwork, Leadership, Problem-Solving.`,
-  about: "Backend Developer with strong JavaScript skills, specializing in building scalable APIs using Node.js, Express.js, and modern databases. Passionate about high-performance systems and currently learning Golang with the Gin framework.",
-  resume: "Opening resume in new tab...",
+Soft Skills:              Communication, Teamwork, Leadership, Problem-Solving. <br> <hr>`,
+  about: "Backend Developer with strong JavaScript skills, specializing in building scalable APIs using Node.js, Express.js, and modern databases. Passionate about high-performance systems and currently learning Golang with the Gin framework.<br> <hr>",
+  resume: "Opening resume in new tab... <br> <hr>",
   projects: `🧑‍💻 Projects:
 - Realtime Device Tracker <a href="https://real-time-device-tracking-jv9r.onrender.com/" class="text-blue-400" target="_blank">🔗</a> 
 A real-time map-based tracking system inspired by Uber/Zomato.
@@ -34,14 +34,14 @@ A real-time map-based tracking system inspired by Uber/Zomato.
 Dynamic E-commerce platform built with Node.js, MongoDB, TailwindCSS, EJS.
 
 - Retro Terminal  <a href="https://roshangupta.onrender.com/" class="text-blue-400" target="_blank">🔗</a>   
-Portfolio made like a Terminal with old school Crt display looks.`,
-  experience: "Hands on Experience with Nodejs and Expressjs in building meaningful projects and researches \nWork Experience:\nNot employed yet — but learning every day, building cool stuff, and preparing for real-world dev challenges.",
-  contact: `📧 Email: <a href="mailto:roshanguptarkg@gmail.com" class="underline text-blue-400" target="_blank">roshanguptarkg@gmail.com</a>
+Portfolio made like a Terminal with old school Crt display looks.<br> <hr>`,
+  experience: "Hands on Experience with Nodejs and Expressjs in building meaningful projects and researches \nWork Experience:\nNot employed yet — but learning every day, building cool stuff, and preparing for real-world dev challenges.<br> <hr>",
+  contact: `📧 Email: <a href="mailto:roshanguptarkg@gmail.com" class="underline text-blue-400" target="_blank">roshanguptarkg@gmail.com </a>
 🔗 LinkedIn: <a href="https://www.linkedin.com/in/roshan-kumar-gupta-a979b626b/" class="underline text-blue-400" target="_blank">linkedin</a>
-🔗 Github: <a href="https://github.com/roshanrkg" class="underline text-blue-400" target="_blank">Github</a>`,
-  clear: "clear",
+🔗 Github: <a href="https://github.com/roshanrkg" class="underline text-blue-400" target="_blank">Github</a><br> <hr>`,
+  clear: "clear ",
   research_and_publications: `“Optimizing Last-Mile Delivery in Indian E-Commerce Using Real Time Geo-location Capture",
-MANTECH Publications – Selected for publication (2025). <a target="_blank" href="https://drive.google.com/file/d/1ZAPBXgBrx6nIZUW1DoqnYHNx86wqwXJu/view">🔗</a> `, 
+MANTECH Publications – Selected for publication (2025). <a target="_blank" href="https://drive.google.com/file/d/1ZAPBXgBrx6nIZUW1DoqnYHNx86wqwXJu/view">🔗</a> <br> <hr>`, 
 };
 
 let commandHistory = [];
