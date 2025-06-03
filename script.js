@@ -41,7 +41,7 @@ Portfolio made like a Terminal with old school Crt display looks.<br> <hr>`,
 🔗 Github: <a href="https://github.com/roshanrkg" class="underline text-blue-400" target="_blank">Github</a><br> <hr>`,
   clear: "clear ",
   research_and_publications: `“Optimizing Last-Mile Delivery in Indian E-Commerce Using Real Time Geo-location Capture",
-MANTECH Publications – Selected for publication (2025). <a target="_blank" href="https://drive.google.com/file/d/1ZAPBXgBrx6nIZUW1DoqnYHNx86wqwXJu/view">🔗</a> <br> <hr>`, 
+MANTECH Publications – Selected for publication (2025). <a target="_blank" href="https://drive.google.com/file/d/1hMr8KZSLLGATACSZ-zYAN2XAciFIbin1/view?usp=sharing">🔗</a> <br> <hr>`, 
 };
 
 let commandHistory = [];
