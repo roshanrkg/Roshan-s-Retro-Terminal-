@@ -66,7 +66,7 @@ input.addEventListener("keydown", (e) => {
 
     if (commands[command]) {
       if (command === "resume") {
-        window.open("Roshan_Kumar_Gupta_Resume.pdf", "_blank");
+        window.open("Roshan_Kumar_Gupta_Resume .pdf", "_blank");
         output.innerHTML += `${commands[command]}\n`;
       } else if (command === "clear") {
         output.innerHTML = "";
@@ -113,4 +113,5 @@ input.addEventListener("keydown", (e) => {
     }
   }
 });
+
 
